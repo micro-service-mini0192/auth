@@ -1,4 +1,4 @@
-package com.chatting.auth.security;
+package com.chatting.auth.security.refreshToken;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

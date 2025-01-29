@@ -2,11 +2,10 @@ package com.chatting.auth.member.presentation;
 
 import com.chatting.auth.member.domain.MemberDetails;
 import com.chatting.auth.security.JwtProvider;
-import com.chatting.auth.security.KafkaRefreshTokenInfo;
-import com.chatting.auth.security.KafkaRefreshTokenProducer;
-import com.chatting.auth.security.RefreshTokenState;
+import com.chatting.auth.security.refreshToken.KafkaRefreshTokenInfo;
+import com.chatting.auth.security.refreshToken.KafkaRefreshTokenProducer;
+import com.chatting.auth.security.refreshToken.RefreshTokenState;
 import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
