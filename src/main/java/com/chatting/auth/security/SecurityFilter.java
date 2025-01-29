@@ -19,6 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SecurityFilter {
 
+    private final KafkaRefreshTokenProducer kafkaRefreshTokenProducer;
     private final AuthenticationManager authenticationManager;
     private final JwtProvider jwtProvider;
 
@@ -32,11 +33,11 @@ public class SecurityFilter {
                 .cors(auth -> auth.configurationSource(corsConfigurationSource()))
                 .sessionManagement(auth -> auth.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
-                .addFilterAt(new LoginFilter(authenticationManager, jwtProvider), UsernamePasswordAuthenticationFilter.class)
+                .addFilterAt(new LoginFilter(authenticationManager, jwtProvider, kafkaRefreshTokenProducer), UsernamePasswordAuthenticationFilter.class)
                 .addFilterAfter(new JwtFilter(jwtProvider), LoginFilter.class)
 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/rooms/**").authenticated()
+                        .requestMatchers("/api/v1/logout").authenticated()
                         .anyRequest().permitAll());
 
         return http.build();

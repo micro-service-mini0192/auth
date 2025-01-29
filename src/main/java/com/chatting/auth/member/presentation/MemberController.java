@@ -26,15 +26,4 @@ public class MemberController {
         memberService.save(dto);
         return ResponseEntity.ok().build();
     }
-
-    @PostMapping("/auth")
-    public ResponseEntity<MemberResponse.MemberInfo> auth(@RequestBody MemberRequest.Authed dto) {
-        MemberDetails memberDetails = jwtProvider.getMemberDetails(dto.token());
-        MemberResponse.MemberInfo memberInfo = MemberResponse.MemberInfo.builder()
-                .id(memberDetails.getMemberId())
-                .username(memberDetails.getUsername())
-                .nickname(memberDetails.getNickname())
-                .build();
-        return ResponseEntity.ok().body(memberInfo);
-    }
 }
