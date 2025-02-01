@@ -28,6 +28,7 @@ public class Member implements Serializable {
     private String nickname;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     @Builder.Default
-    private String role = MemberRole.ROLE_USER.name();
+    private MemberRole role = MemberRole.ROLE_USER;
 }
