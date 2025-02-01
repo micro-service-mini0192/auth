@@ -1,25 +1,3 @@
 spring:
-  web:
-    resources:
-      add-mappings: false
-
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${url}:3306/auth
-    username: user
-    password: ${password}
-
-  jpa:
-    open-in-view: true
-    hibernate:
-      ddl-auto: validate
-    show-sql: false
-
-server:
-  port: 8000
-
-kafka:
-  url: ${url}
-
-security:
-  key: ${key}
+  profiles:
+    active: dev
